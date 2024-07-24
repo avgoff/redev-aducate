@@ -1032,8 +1032,8 @@
 // //2
 
 // class Square extends Rectangle{
-//   constructor(width, heigh, sideLength) {
-//     super(width, heigh);
+//   constructor(sideLength) {
+//     super(sideLength, sideLength);
 //     this.sideLength = sideLength;
 //   }
 
@@ -1216,13 +1216,283 @@
 
 // const json = JSON.stringify(studentsData);
 
-const numbers = [4, 2, 7, 1, 9];
-let a = numbers.some( value => 
-    value % 2 == 0
-);
-console.log(a); 
-const numberrs = [1, 2, 3, 4, 5];
-const hasEven = numberrs.some((number) => number % 2 === 0);
-console.log(hasEven);
+
+// class A{
+//     //#name;
+//     static count = 0;
+
+//     constructor( name, age){
+//         this.name = name;
+//         this.age = age;
+//         A.count++;
+//     }
+
+//     get age(){
+//         return this._age
+//     }
 
 
+//     set age(value){
+//         if(value <18){
+//             console.log('malo');
+//             return
+//         }
+//         this._age=value
+//     }
+
+//     getName(){
+//         return this.name;
+//     }
+
+//     setName(name){
+        
+//         this.name = name;
+            
+//     } 
+
+//     say(){
+//         return `меня зовут: ${this.name} и мне ${this._age} `
+//     }
+// }
+
+// const alex = new A('alex', 19);
+// console.log(alex);
+// alex.age = 17;
+// console.log(A.count);
+
+// class B extends A{
+    
+//     constructor(name, age, city){
+//         super(name,age);
+//         this.city = city;
+//     }
+
+//     say(){
+//         super.say();
+//         return `меня зовут ${this.name}, мне ${this._age}, мой город ${this.city}`
+//     }
+
+// }
+
+// const dima = new B('dima', 24, 'gomel')
+// console.log(dima.say());
+
+
+
+
+
+
+
+
+
+
+
+
+//защита 5 чек
+// class Car {
+//     #acceptableBrands = ["Tesla", "BMW", "Mercedes"];
+//     constructor(brand, model) {
+//       this.brand = brand;
+//       this.model = model;
+//     }
+
+//     set brand(value){
+//         if( this.#acceptableBrands.includes(value)){
+//             console.log('указан неверный бренд');
+//             return;
+//         }
+//         return this._brand = value;
+//     }
+  
+//     static isElectric(car) {
+//      return car instanceof ElectricCar
+     
+//     }
+//   }
+
+//   class ElectricCar extends Car {
+//     constructor(make, model) {
+//       super(make, model);
+//     }
+//   }
+  
+//   const myCar = new Car("Toyota", "Corolla");
+//   const electricCar = new ElectricCar("Tesla", "Model S");
+//   console.log(Car.isElectric(myCar)); // false
+//   console.log(Car.isElectric(electricCar)); // true
+
+//   const mixin = {
+//     imixin(){
+//         return `я примесь`;
+    
+//     }
+//   };
+
+//   Object.assign(ElectricCar.prototype, mixin);
+
+//   console.log(electricCar.imixin());
+  
+
+
+  //Преобразовать массив объектов с полями name и age в массив строк вида "Имя: Возраст", где Имя и Возраст берутся из объектов.
+// const peoples = [
+//     {
+//         name: 'Николай',
+//         age: 19
+//     },
+//     {
+//         name: 'Василий',
+//         age: 45
+//     },
+//     {
+//         name: 'Женя',
+//         age: 22
+//     },
+//     {
+//         name: 'Олег',
+//         age: 30
+//     }
+// ]
+
+// function evArr(arr){
+//     return arr.every(value => { return value.age > 18});
+
+// };
+// console.log(evArr(peoples));
+
+
+// function redArr(arr){
+//     return arr.reduce((previousValue, currentValue, currentIndex, array) => { return previousValue + currentValue.age},0)/arr.length;
+// }
+
+// console.log(redArr(peoples));
+
+
+// function sortArr(arr){
+//     return arr.sort((a, b) => {return a.name[0].charCodeAt() - b.name[0].charCodeAt()});
+// }
+
+// console.log(sortArr(peoples));
+
+
+
+
+//callback задачи
+// //1
+
+// function sumNumbers(a, b, callback){
+//     const result = a + b;
+//     callback(result)
+// }
+
+// function resultCallback(result) {
+//     console.log('Результат: ' + result);
+// }
+
+// console.log(sumNumbers(2,5, resultCallback));
+
+// //2
+// function someFunction2(arr, callback){
+//     for( let i = 0; i<arr.length; i++){
+//         callback(arr[i]);
+//     }
+// };
+
+// function myCallback2(item){
+//     console.log(item);
+// };
+
+// let numbers = [1,2,3,4];
+
+// console.log(someFunction2(numbers, myCallback2));
+
+// //3
+// function someFunction3(arrStr, callback){
+//     for (const str of arrStr){
+//        callback(str); 
+//     }
+    
+// };
+
+// function myCallback3(str){
+//     console.log(str.toUpperCase());
+// };
+
+// let arrSomeString = [
+//     'строка1',
+//     'строка2',
+//     'ещё строка'
+// ];
+
+// console.log(someFunction3(arrSomeString, myCallback3));
+
+// //4
+// function someFunction4(arrNum, callback){
+//     for (const num of arrNum){
+//         callback(num);
+//     }
+    
+// }
+
+// function myCallback4(num){
+//     if (num % 2 == 0){
+//         console.log(`${num} - Это четное число`);
+//         return;
+//     } console.log(`${num} - Это нечетное число`);
+//     return
+// }
+// let someNumbersArr = [ 1,2,33,4];
+
+// console.log(someFunction4(someNumbersArr, myCallback4));
+
+// //5
+// function someFunction5(arr, callback){
+//     for (let obj of arr){
+//         callback(obj);
+//     }
+// };
+
+// function myCallback5(obj){
+//     if( obj.hasOwnProperty('age')){
+//         console.log(`Возраст: ${obj.age}`);
+//         return;
+//     } else{
+//         console.log('Такого свойства нет');
+//     }
+// }
+
+// const someArr = [
+//     {
+//         name: 'Николай',
+//         age: 19
+//     },
+//     {
+//         name: 'Василий',
+//         age: 45
+//     },
+//     {
+//         name: 'Женя',
+//         age: 22
+//     },
+//     {
+//         name: 'Олег',
+//     }
+// ];
+// console.log(someFunction5( someArr, myCallback5));
+
+
+
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Привет, Redev!");
+  }, 2000);
+});
+
+promise
+  .then((result) => {
+    console.log(result); // "Привет, Redev!"
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+  s
