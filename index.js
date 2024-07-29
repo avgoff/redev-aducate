@@ -1013,7 +1013,7 @@
 
 
 
-
+//----------------------------------------------------------------КЛАССЫ-----------------------------------------------------
 //1
 // class Rectangle{
 //   constructor(width, heigh){
@@ -1217,78 +1217,11 @@
 // const json = JSON.stringify(studentsData);
 
 
-// class A{
-//     //#name;
-//     static count = 0;
-
-//     constructor( name, age){
-//         this.name = name;
-//         this.age = age;
-//         A.count++;
-//     }
-
-//     get age(){
-//         return this._age
-//     }
-
-
-//     set age(value){
-//         if(value <18){
-//             console.log('malo');
-//             return
-//         }
-//         this._age=value
-//     }
-
-//     getName(){
-//         return this.name;
-//     }
-
-//     setName(name){
-        
-//         this.name = name;
-            
-//     } 
-
-//     say(){
-//         return `меня зовут: ${this.name} и мне ${this._age} `
-//     }
-// }
-
-// const alex = new A('alex', 19);
-// console.log(alex);
-// alex.age = 17;
-// console.log(A.count);
-
-// class B extends A{
-    
-//     constructor(name, age, city){
-//         super(name,age);
-//         this.city = city;
-//     }
-
-//     say(){
-//         super.say();
-//         return `меня зовут ${this.name}, мне ${this._age}, мой город ${this.city}`
-//     }
-
-// }
-
-// const dima = new B('dima', 24, 'gomel')
-// console.log(dima.say());
 
 
 
 
-
-
-
-
-
-
-
-
-//защита 5 чек
+//-------------------защита 5 чек-----------------
 // class Car {
 //     #acceptableBrands = ["Tesla", "BMW", "Mercedes"];
 //     constructor(brand, model) {
@@ -1377,7 +1310,7 @@
 
 
 
-//callback задачи
+//---------------------------callback задачи--------------
 // //1
 
 // function sumNumbers(a, b, callback){
@@ -1481,7 +1414,11 @@
 // console.log(someFunction5( someArr, myCallback5));
 
 
-//тема Promise
+
+
+//---------------------тема Promise------------------------
+
+
 // //1 Напиши функцию, которая получает на вход два числа и возвращает Promise, который разрешается через 1 секунду с результатом суммы этих чисел. Если одно из чисел не является числом, Promise должен быть отклонен с ошибкой.
 
 // function someFunction(a,b){
@@ -1592,7 +1529,13 @@
 //   .then(p => console.log(p))//вывод в консоль
 
 
-//async/await
+
+
+
+
+//----------------------async/await---------------------
+
+
 // 1 Напиши асинхронную функцию, которая принимает на вход строку и callback-функцию. Внутри асинхронной функции нужно вызвать callback-функцию через указанное количество миллисекунд, где количество миллисекунд равно длине строки. callback функция должна выводить в консоль переданную строку
 
 // async function someFunction(str, callback){
@@ -1649,3 +1592,13 @@
 // }
 
 // some('alex', 'Gum');
+
+const prom1 = new Promise()
+
+async function someFunction(str, num){
+  try{
+    const date = await promise
+  } catch (error){
+    console.log(error);
+  }
+};
