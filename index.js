@@ -1482,7 +1482,7 @@
 
 
 //тема Promise
-//1 Напиши функцию, которая получает на вход два числа и возвращает Promise, который разрешается через 1 секунду с результатом суммы этих чисел. Если одно из чисел не является числом, Promise должен быть отклонен с ошибкой.
+// //1 Напиши функцию, которая получает на вход два числа и возвращает Promise, который разрешается через 1 секунду с результатом суммы этих чисел. Если одно из чисел не является числом, Promise должен быть отклонен с ошибкой.
 
 // function someFunction(a,b){
 //   return new Promise((resolve, reject) => {
@@ -1513,7 +1513,7 @@
 //   });
 
 
-//2 Напиши функцию getUser(id), которая возвращает промис, который разрешается (resolve) пользователем с заданным идентификатором, или отклоняется с ошибкой, если пользователь не найден.
+// //2 Напиши функцию getUser(id), которая возвращает промис, который разрешается (resolve) пользователем с заданным идентификатором, или отклоняется с ошибкой, если пользователь не найден.
 
 //  const users = [
 //   { id: 1, name: "Nastya" },
@@ -1541,7 +1541,7 @@
 //   .catch(error => console.error(error));
 
 
-//3 Напиши функцию sum(numbers), которая возвращает промис, который разрешается (resolve) суммой чисел в массиве, или отклоняется с ошибкой, если массив пуст
+// //3 Напиши функцию sum(numbers), которая возвращает промис, который разрешается (resolve) суммой чисел в массиве, или отклоняется с ошибкой, если массив пуст
 
 // const sum = (numbers) => {
 //   return new Promise((resolve, reject)=>{
@@ -1561,7 +1561,7 @@
 // sum([1, 2, 3, 4, 5]).then(sum => console.log(sum)) // 15
 // sum([]).catch(err => console.log(err)) // "Массив пуст"
 
-//4 Напиши функцию delayedGreeting(name, delay), которая будет возвращать Promise, который будет разрешаться (resolve) через заданный промежуток времени delay и выводить на экран приветствие Hello, ${name}!. 
+// //4 Напиши функцию delayedGreeting(name, delay), которая будет возвращать Promise, который будет разрешаться (resolve) через заданный промежуток времени delay и выводить на экран приветствие Hello, ${name}!. 
 //  const delayedGreeting = (name, delay) =>{
 //   return new Promise((resolve)=> {
 //       setTimeout(()=>resolve(`Hello, ${name}!`), delay*1000)
@@ -1571,17 +1571,81 @@
 //  delayedGreeting('Alex',3)
 //   .then(date => console.log(date));
 
-//5 Напиши функцию waitForAll(promises), которая будет принимать массив Promise и возвращать новый Promise, который разрешится (resolve), когда все Promise из массива promises будут выполнены. Результатом выполнения нового Promise будет массив результатов выполнения каждого из Promise из исходного массива.
-function waitForAll(promises){
-    return new Promise((resolve)=>{resolve(Promise.all(promises));
-    })
-}
+// //5 Напиши функцию waitForAll(promises), которая будет принимать массив Promise и возвращать новый Promise, который разрешится (resolve), когда все Promise из массива promises будут выполнены. Результатом выполнения нового Promise будет массив результатов выполнения каждого из Promise из исходного массива.
+// function waitForAll(promises){
+//     return Promise.all(promises);
+// }
+
+//   let pr1 = new Promise(resolve=> setTimeout(()=>resolve('prom1',1000)));
+//   let pr2 = new Promise(resolve=> setTimeout(()=>resolve('prom2',2000)));
+//   let pr3 = new Promise(resolve=> setTimeout(()=>resolve('prom3',3000)));
+
+// waitForAll([pr1, pr2, pr3])
+//   .then(date => console.log(date));
+
+// //6
+// Promise.reject('a')//промис завершается с ошибкой
+//   .catch(p => p + 'b')//его обрабатывает первый .catch() будет ab ,больше ошибки нет
+//   .catch(p=> p +'c')//ошибки нет, идем дальше
+//   .then(p => p +'d')//далее выполнится then abd
+//   .finally(p => p +'e')//получается значение из finally игнорируется и промис передается дальше
+//   .then(p => console.log(p))//вывод в консоль
 
 
-  let pr1 = new Promise(resolve=> setTimeout(()=>resolve('prom1',1000)));
-  let pr2 = new Promise(resolve=> setTimeout(()=>resolve('prom2',2000)));
-  let pr3 = new Promise(resolve=> setTimeout(()=>resolve('prom3',3000)));
+//async/await
+// 1 Напиши асинхронную функцию, которая принимает на вход строку и callback-функцию. Внутри асинхронной функции нужно вызвать callback-функцию через указанное количество миллисекунд, где количество миллисекунд равно длине строки. callback функция должна выводить в консоль переданную строку
 
+// async function someFunction(str, callback){
+//   setTimeout(() => callback(str), str.length*1000)
+// }
 
-waitForAll([pr1, pr2, pr3])
-  .then(date => console.log(date));
+// function myCallback(str){
+//   console.log(str);
+// }
+
+// someFunction('JS', myCallback);
+
+//2 Напиши функцию, которая получает на вход число и возвращает промис, который будет разрешен только после того, как будет вычислено факториал этого числа.
+// const myProm = (num) => new Promise((resolve, reject)=>{
+//   if(num < 0){
+//     reject('Введите положительное число')
+//   } else{
+//     resolve(factorial(num));
+//   }
+// } );
+
+// function factorial(num) {   //в этой функции вычисляем факториал
+//   if (num === 0) {
+//     return 1;
+//   } else {
+//     return num * factorial(num - 1);
+//   }
+// };
+
+// async function asyncFunction(num){
+//   try{
+//     const data = await myProm(num);
+//     console.log(data);
+//   } catch (error){
+//     console.log(error);
+//   }
+// }
+
+// asyncFunction(5)
+
+//5 Напиши функцию, которая принимает 2 промиса (оба успешно завершенных). Первый возвращает твое имя, второй твою фамилию. Функция должна вернуть успешно завершенный промис с имя + фамилия
+
+// const namePromise = (name) => Promise.resolve(`${name}`);
+// const sourNamePromise = (sourName) => Promise.resolve(`${sourName}`);
+
+// async function some(name, sourName){
+//   try{
+//     const date1 = await namePromise(name);
+//     const date2 = await sourNamePromise(sourName);
+//     console.log(date1 + ' ' + date2);
+//   } catch (error){
+//     console.log(error);
+//   }
+// }
+
+// some('alex', 'Gum');
