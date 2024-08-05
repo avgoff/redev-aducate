@@ -1549,23 +1549,24 @@
 // someFunction('JS', myCallback);
 
 // //2 Напиши функцию, которая получает на вход число и возвращает промис, который будет разрешен только после того, как будет вычислено факториал этого числа.
-// const myProm = (num) => new Promise((resolve, reject)=>{
-//   if(num < 0){
-//     reject('Введите положительное число')
-//   } else{
-//     resolve(factorial(num));
-//   }
-// } );
-
-// function factorial(num) {   //в этой функции вычисляем факториал
-//   if (num === 0) {
-//     return 1;
-//   } else {
-//     return num * factorial(num - 1);
-//   }
-// };
 
 // async function asyncFunction(num){
+//   const myProm = (num) => new Promise((resolve, reject)=>{
+//     if(num < 0){
+//       reject('Введите положительное число')
+//     } else{
+//       resolve(factorial(num));
+//     }
+//   } );
+
+//   function factorial(num) {   //в этой функции вычисляем факториал
+//     if (num === 0) {
+//       return 1;
+//     } else {
+//       return num * factorial(num - 1);
+//     }
+//   };
+
 //   try{
 //     const data = await myProm(num);
 //     console.log(data);
@@ -1574,14 +1575,15 @@
 //   }
 // }
 
-// asyncFunction(5)
+// asyncFunction(3)
 
 // //5 Напиши функцию, которая принимает 2 промиса (оба успешно завершенных). Первый возвращает твое имя, второй твою фамилию. Функция должна вернуть успешно завершенный промис с имя + фамилия
 
-// const namePromise = (name) => Promise.resolve(`${name}`);
-// const sourNamePromise = (sourName) => Promise.resolve(`${sourName}`);
 
 // async function some(name, sourName){
+//   const namePromise = (name) => Promise.resolve(`${name}`);
+//   const sourNamePromise = (sourName) => Promise.resolve(`${sourName}`);
+
 //   try{
 //     const date1 = await namePromise(name);
 //     const date2 = await sourNamePromise(sourName);
@@ -1595,13 +1597,14 @@
 
 
 // //4 Напиши функцию, которая получает на вход два аргумента: строку и число. Функция должна возвращать промис, который будет разрешен только после того, как введенная строка будет выведена в консоль указанное количество раз. Например, если функции переданы аргументы "hello" и 3, то промис должен разрешиться только после того, как строка "hello" будет выведена в консоль 3 раза.
-// const prom1 = (str, num) => new Promise(resolve => {
-//   for (let i = 0; i < num; i++) {
-//     console.log(str);
-//   };
-// })
 
 // async function someFunction(str, num){
+//   const prom1 = (str, num) => new Promise(resolve => {
+//     for (let i = 0; i < num; i++) {
+//       console.log(str);
+//     };
+//   })
+
 //   try{
 //     const date = await prom1(str, num)
 //     console.log(date);
@@ -1617,23 +1620,23 @@
 // //Полученую строку вывести в консоль...
 // //Если хотя бы один из промисов завершается с отклонением, функция должна вернуть промис со строкой "плохой запрос"
 
-// const namePromise = (name) => new Promise((resolve, reject) => {
-//   if(typeof name !== 'string'){
-//     reject('плохой запрос')
-//   }else{
-//     resolve(`${name}`)
-//   }
-// });
-
-// const agePromise = (age) => new Promise((resolve, reject) => {
-//   if(typeof age !== 'number'){
-//     reject('плохой запрос')
-//   }else{
-//     resolve(`${age}`)
-//   }
-// });
-
 // async function some(name, age){
+//   const namePromise = (name) => new Promise((resolve, reject) => {
+//     if(typeof name !== 'string'){
+//       reject('плохой запрос')
+//     }else{
+//       resolve(`${name}`)
+//     }
+//   });
+
+//   const agePromise = (age) => new Promise((resolve, reject) => {
+//     if(typeof age !== 'number'){
+//       reject('плохой запрос')
+//     }else{
+//       resolve(`${age}`)
+//     }
+//   });
+
 //   try{
 //     const date1 = await namePromise(name);
 //     const date2 = await agePromise(age);
