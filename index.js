@@ -1647,3 +1647,50 @@
 // }
 
 // some('alex', 24);
+
+
+//---------Event Loop----------------
+//Что попадет в микротаск, а что в макротаск?
+
+//Макрозадачи: setTimeout, setInterval, setImmediate
+//Микрозадачи: process.nextTick, Promise callback, queueMicrotask
+//макрозадачи выполняются после микрозадач
+
+//2 В какой последовательности выполнятся console.log?
+//answer: 1, 3, 4, 6, 2, 5, 7
+console.log(1); //1) сразу выводим в консоль - 1
+
+setTimeout(() => console.log(2), 1000); //5)макрозазада выполн после микрозадач, таймер на 1с, выводим - 2
+
+console.log(3);//2) сразу выводим в консоль - 3
+
+new Promise((res) => res(4)).then((data) => console.log(data));//3) разрешается промис со знач - 4
+
+setTimeout(() => console.log(5), 2000);//6) после предыдущей макрозадчи, таймер на 2с, выводим - 5
+
+Promise.resolve(6).then((data) => console.log(data));//4) разрешается промис со знач - 6
+
+new Promise((res) => setTimeout(() => res(7), 3000)).then((data) =>
+  console.log(data)
+); //макрозазада , т.к. есть setTimeout, самый большой таймер, значит последний вывод - 7
+
+
+//3 В какой последовательности выполнятся console.log?
+//answer:4, цикл(0,1), 1, 3, 5, 2, 7
+setTimeout(() => console.log(5), 0); //4) это макрозадача, после микрозадач, по таймеру 0, вывод - 5
+
+new Promise((res) => res(1)).then((data) => console.log(data)); //3) разрешается промис т.к. это микрозадача - 1
+
+setTimeout(() => console.log(2), 1000); //5) это макро, после предыдущей макро, по таймеру 1с, вывод - 2
+
+Promise.resolve(3).then((data) => console.log(data));//4) разрешается промис т.к. это микрозадача - 3
+
+console.log(4);// 1) выполнится сразу - 4
+
+new Promise((res) => setTimeout(() => res(7), 2000)).then((data) =>
+  console.log(data)
+); //6) промис с таймером на 2с, разрешится после предудущего на 1с, вывод - 7
+
+for (let i = 0; i < 2; i++) {
+  console.log(i);
+} // 2) потом цикл (0,1)
