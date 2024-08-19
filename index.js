@@ -1577,6 +1577,26 @@
 
 // asyncFunction(3)
 
+//finish ver
+// async function factorial(n) {
+//   if (n === 0) {
+//     return 1;
+//   } else {
+//     return n * await factorial(n - 1);
+//   }
+// }
+
+// async function main(n) {
+//   try {
+//     const result = await factorial(n);
+//     console.log(result); // Вывод: 120
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+// main(5);
+
 // //5 Напиши функцию, которая принимает 2 промиса (оба успешно завершенных). Первый возвращает твое имя, второй твою фамилию. Функция должна вернуть успешно завершенный промис с имя + фамилия
 
 
@@ -1598,8 +1618,9 @@
 
 // //4 Напиши функцию, которая получает на вход два аргумента: строку и число. Функция должна возвращать промис, который будет разрешен только после того, как введенная строка будет выведена в консоль указанное количество раз. Например, если функции переданы аргументы "hello" и 3, то промис должен разрешиться только после того, как строка "hello" будет выведена в консоль 3 раза.
 
+
 // async function someFunction(str, num){
-//   const prom1 = (str, num) => new Promise(resolve => {
+// const prom1 = (str, num) => new Promise(resolve => {
 //     for (let i = 0; i < num; i++) {
 //       console.log(str);
 //     };
@@ -1614,13 +1635,31 @@
 // };
 // someFunction('hello', 3)
 
+// finish ver
+// async function func(str, num) {
+//   while (num > 0) {
+//      num--;
+//      console.log(str)
+//   }
+// }
+
+// async function someF(str, num) {
+//   try{
+//         const date = await func(str, num)
+//         console.log(date);
+//       } catch (error){
+//         console.log(error);
+//       }
+//     };
+//     someF('hello', 3)
+
+
 // //3 В задаче нужно написать 2 промиса. Первый вернет твое имя. Второй вернет твой возраст.
 // //Через асинхронную функцию обработать промисы и вернуть промис, который завершается успешно со значением строки. 
 // //Пример строки: "Имя - возраст" "Паша - 26"
 // //Полученую строку вывести в консоль...
 // //Если хотя бы один из промисов завершается с отклонением, функция должна вернуть промис со строкой "плохой запрос"
 
-// async function some(name, age){
 //   const namePromise = (name) => new Promise((resolve, reject) => {
 //     if(typeof name !== 'string'){
 //       reject('плохой запрос')
@@ -1637,6 +1676,7 @@
 //     }
 //   });
 
+// async function some(name, age){
 //   try{
 //     const date1 = await namePromise(name);
 //     const date2 = await agePromise(age);
@@ -1649,7 +1689,11 @@
 // some('alex', 24);
 
 
-//---------Event Loop----------------
+
+
+
+
+//--------------------------Event Loop----------------
 //Что попадет в микротаск, а что в макротаск?
 
 //Макрозадачи: setTimeout, setInterval, setImmediate
@@ -1658,39 +1702,39 @@
 
 //2 В какой последовательности выполнятся console.log?
 //answer: 1, 3, 4, 6, 2, 5, 7
-console.log(1); //1) сразу выводим в консоль - 1
+// console.log(1); //1) сразу выводим в консоль - 1
 
-setTimeout(() => console.log(2), 1000); //5)макрозазада выполн после микрозадач, таймер на 1с, выводим - 2
+// setTimeout(() => console.log(2), 1000); //5)макрозазада выполн после микрозадач, таймер на 1с, выводим - 2
 
-console.log(3);//2) сразу выводим в консоль - 3
+// console.log(3);//2) сразу выводим в консоль - 3
 
-new Promise((res) => res(4)).then((data) => console.log(data));//3) разрешается промис со знач - 4
+// new Promise((res) => res(4)).then((data) => console.log(data));//3) разрешается промис со знач - 4
 
-setTimeout(() => console.log(5), 2000);//6) после предыдущей макрозадчи, таймер на 2с, выводим - 5
+// setTimeout(() => console.log(5), 2000);//6) после предыдущей макрозадчи, таймер на 2с, выводим - 5
 
-Promise.resolve(6).then((data) => console.log(data));//4) разрешается промис со знач - 6
+// Promise.resolve(6).then((data) => console.log(data));//4) разрешается промис со знач - 6
 
-new Promise((res) => setTimeout(() => res(7), 3000)).then((data) =>
-  console.log(data)
-); //макрозазада , т.к. есть setTimeout, самый большой таймер, значит последний вывод - 7
+// new Promise((res) => setTimeout(() => res(7), 3000)).then((data) =>
+//   console.log(data)
+// ); //макрозазада , т.к. есть setTimeout, самый большой таймер, значит последний вывод - 7
 
 
 //3 В какой последовательности выполнятся console.log?
 //answer:4, цикл(0,1), 1, 3, 5, 2, 7
-setTimeout(() => console.log(5), 0); //4) это макрозадача, после микрозадач, по таймеру 0, вывод - 5
+// setTimeout(() => console.log(5), 0); //4) это макрозадача, после микрозадач, по таймеру 0, вывод - 5
 
-new Promise((res) => res(1)).then((data) => console.log(data)); //3) разрешается промис т.к. это микрозадача - 1
+// new Promise((res) => res(1)).then((data) => console.log(data)); //3) разрешается промис т.к. это микрозадача - 1
 
-setTimeout(() => console.log(2), 1000); //5) это макро, после предыдущей макро, по таймеру 1с, вывод - 2
+// setTimeout(() => console.log(2), 1000); //5) это макро, после предыдущей макро, по таймеру 1с, вывод - 2
 
-Promise.resolve(3).then((data) => console.log(data));//4) разрешается промис т.к. это микрозадача - 3
+// Promise.resolve(3).then((data) => console.log(data));//4) разрешается промис т.к. это микрозадача - 3
 
-console.log(4);// 1) выполнится сразу - 4
+// console.log(4);// 1) выполнится сразу - 4
 
-new Promise((res) => setTimeout(() => res(7), 2000)).then((data) =>
-  console.log(data)
-); //6) промис с таймером на 2с, разрешится после предудущего на 1с, вывод - 7
+// new Promise((res) => setTimeout(() => res(7), 2000)).then((data) =>
+//   console.log(data)
+// ); //6) промис с таймером на 2с, разрешится после предудущего на 1с, вывод - 7
 
-for (let i = 0; i < 2; i++) {
-  console.log(i);
-} // 2) потом цикл (0,1)
+// for (let i = 0; i < 2; i++) {
+//   console.log(i);
+// } // 2) потом цикл (0,1)
