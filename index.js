@@ -1745,155 +1745,160 @@
 //-------------------------------HTTP---------------------
 //const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF2Z29mZjFAZ21haWwuY29tIiwiaWQiOjg4NCwiaWF0IjoxNzI0MTcwODAzfQ.6F_JeCk85NoPc4Ol6LwHBE134lH7zSf7tS6wl-ZUrFs';
 
-const userAlex = {
-  "username": "avg",
-  "email": "avgoff1@gmail.com",
-  "password": "Somepass1!",
-  "gender": "male",
-  "age": 24
-}
+// const userAlex = {
+//   "username": "avg",
+//   "email": "avgoff1@gmail.com",
+//   "password": "Somepass1!",
+//   "gender": "male",
+//   "age": 24
+// }
 
-const {email, password } = userAlex;
-
-
-async function registration (obj) {  
-  try{
-    const response = await fetch('https://todo-redev.herokuapp.com/api/users/register', {
-      method : "POST",
-      headers: {
-        'accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(obj)
-    });
-    const data = await response.json();
-    //console.log('data: ', data);
-  } catch(error){
-    console.log('error: ', error);
-  }
-}
-
-async function login (email, password) {
-  try{
-    const response = await fetch('https://todo-redev.herokuapp.com/api/auth/login',{
-      method: 'POST',
-      headers: {
-        'accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({email, password})
-    });
-    const data = await response.json();
-    //console.log('data: ', data);
-
-    if(response.ok){
-      return data;
-    }
-  } catch(error){
-    console.log('error: ', error);
-  }
-}
-
-async function createTask (taskName, token) {
-  try{
-    const response = await fetch('https://todo-redev.herokuapp.com/api/todos',{
-      method: 'POST',
-      headers: {
-        'accept': 'application/json',
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ title: taskName })
-    });
-    const data = await response.json();
-    //console.log('data: ', data);
-
-    if(response.ok){
-      return data;
-    }
-  } catch(error){
-    console.log('error: ', error);
-  }
-}
-
-async function getTasks (token) {
-  try{
-    const response = await fetch('https://todo-redev.herokuapp.com/api/todos?isCompleted=false',{
-      method: "GET",
-      headers: {
-        'accept': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
-    });
-    const data = await response.json();
-    console.log('data: ', data);
-
-    if(response.ok){
-      return data;
-    }
-  }catch(error){
-    console.log('error: ', error);
-  }
-}
-
-async function editTask (taskName, id, token) {
-  try{
-    const response = await fetch(`https://todo-redev.herokuapp.com/api/todos/${id}`,{
-      method: "PATCH",
-      headers: {
-        'accept': 'application/json', 
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ title: taskName })
-    });
-
-    const data = await response.json();
-   // console.log('data: ', data);
-  } catch{
-    console.log('error: ', error);
-  }
-}
-
-async function deleteTask (id, token) {
-  try{
-    const response = await fetch(`https://todo-redev.herokuapp.com/api/todos/${id}`,{
-      method: 'DELETE',
-      headers: {
-        'accept': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-    });
-    const data = await response.json();
-    //console.log('data del: ', data);
-  }catch(error){
-    console.log('error: ', error);
-  }
-}
+// const {email, password } = userAlex;
 
 
+// async function registration (obj) {  
+//   try{
+//     const response = await fetch('https://todo-redev.herokuapp.com/api/users/register', {
+//       method : "POST",
+//       headers: {
+//         'accept': 'application/json',
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(obj)
+//     });
+//     const data = await response.json();
+//     //console.log('data: ', data);
+//   } catch(error){
+//     console.log('error: ', error);
+//   }
+// }
+
+// async function login (email, password) {
+//   try{
+//     const response = await fetch('https://todo-redev.herokuapp.com/api/auth/login',{
+//       method: 'POST',
+//       headers: {
+//         'accept': 'application/json',
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({email, password})
+//     });
+//     const data = await response.json();
+//     //console.log('data: ', data);
+
+//     if(response.ok){
+//       return data;
+//     }
+//   } catch(error){
+//     console.log('error: ', error);
+//   }
+// }
+
+// async function createTask (taskName, token) {
+//   try{
+//     const response = await fetch('https://todo-redev.herokuapp.com/api/todos',{
+//       method: 'POST',
+//       headers: {
+//         'accept': 'application/json',
+//         'Authorization': `Bearer ${token}`,
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({ title: taskName })
+//     });
+//     const data = await response.json();
+//     //console.log('data: ', data);
+
+//     if(response.ok){
+//       return data;
+//     }
+//   } catch(error){
+//     console.log('error: ', error);
+//   }
+// }
+
+// async function getTasks (token) {
+//   try{
+//     const response = await fetch('https://todo-redev.herokuapp.com/api/todos?isCompleted=false',{
+//       method: "GET",
+//       headers: {
+//         'accept': 'application/json',
+//         'Authorization': `Bearer ${token}`
+//       }
+//     });
+//     const data = await response.json();
+//     console.log('data: ', data);
+
+//     if(response.ok){
+//       return data;
+//     }
+//   }catch(error){
+//     console.log('error: ', error);
+//   }
+// }
+
+// async function editTask (taskName, id, token) {
+//   try{
+//     const response = await fetch(`https://todo-redev.herokuapp.com/api/todos/${id}`,{
+//       method: "PATCH",
+//       headers: {
+//         'accept': 'application/json', 
+//         'Authorization': `Bearer ${token}`,
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({ title: taskName })
+//     });
+
+//     const data = await response.json();
+//    // console.log('data: ', data);
+//   } catch{
+//     console.log('error: ', error);
+//   }
+// }
+
+// async function deleteTask (id, token) {
+//   try{
+//     const response = await fetch(`https://todo-redev.herokuapp.com/api/todos/${id}`,{
+//       method: 'DELETE',
+//       headers: {
+//         'accept': 'application/json',
+//         'Authorization': `Bearer ${token}`
+//       },
+//     });
+//     const data = await response.json();
+//     //console.log('data del: ', data);
+//   }catch(error){
+//     console.log('error: ', error);
+//   }
+// }
 
 
-async function main (obj) {
-  // зарегистрировать пользователя
-  //await registration(obj)
 
-  // авторизоваться
-  const { token } = await login(email, password)
 
-  // создать таску
-  const { id } = await createTask('Купить рыбу', token)
+// async function main (obj) {
+//   // зарегистрировать пользователя
+//   //await registration(obj)
+
+//   // авторизоваться
+//   const { token } = await login(email, password)
+
+//   // создать таску
+//   const { id } = await createTask('Купить рыбу', token)
   
 
-  // список всех тасок
-  const tasks = await getTasks(token)
+//   // список всех тасок
+//   const tasks = await getTasks(token)
 
-  // изменить таску
-  await editTask('Купить мясо', id, token)
+//   // изменить таску
+//   await editTask('Купить мясо', id, token)
   
-  // удалить таску
-  await deleteTask(id, token)
+//   // удалить таску
+//   await deleteTask(id, token)
   
-}
+// }
 
-main(userAlex)
+// main(userAlex)
+
+
+
+
+
