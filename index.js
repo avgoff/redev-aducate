@@ -1899,6 +1899,108 @@
 // main(userAlex)
 
 
+//------------------------------------------------------------------------------------
+// const promise1 = new Promise((_, reject) => setTimeout(() => reject(1), 2000));
+// const promise2 = new Promise((_, reject) => setTimeout(() => reject(2), 1000));
+// const promise3 = new Promise((_, reject) => setTimeout(() => reject(3), 3000));
+
+// Promise.any([promise1, promise2, promise3]).then(data => console.log(data))
 
 
+// Promise.reject()
+//   .catch(() => {
+//     console.log('0')
+//     return Promise.reject();
+//   })
+//   .then(() => {
+//     console.log('1')
+//   })
+//   .catch(() => {
+//     console.log('2')
+//   })
 
+
+// function createUser(delay, name, age) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve({ name, age });
+//     }, delay);
+//   });
+// }
+
+// const userPromises = [
+//   createUser(100, "Pavel", 26),
+//   createUser(100, "Nastya", 28),
+//   createUser(300, "Ivan", 45),
+// ];
+
+// async function averageAge(users) {
+//   try{
+//     const data = await Promise.all(users);
+//     console.log(data);
+//   } catch
+  
+// }
+
+// averageAge(userPromises);
+
+
+// function a(){
+//   function b(){
+
+//   }
+//   return b
+// }
+
+// a(b());
+
+// new Promise(res => {
+//   console.log(6)
+//   res(1)
+// }).then(data => console.log(data))
+
+// setTimeout(() => console.log(2), 1000)
+
+// Promise.resolve(3).then(data => console.log(data))
+
+// setTimeout(() => console.log(5), 0)
+
+// console.log(4)
+
+// new Promise(res => setTimeout(() => res(7), 2000)).then(data =>
+//   console.log(data)
+// )
+
+// for (let i = 0; i < 2; i++) {
+//   console.log(i)
+// }
+// //401613527
+
+// console.log(1)
+
+// async function fun() {
+//   console.log(2);
+//   console.log(3)
+//   return 4
+// }
+// fun().then(console.log)
+
+// console.log(5)
+// //12354
+
+// console.log('1');
+
+// async function fun(){
+//   console.log(2);
+
+//   const promise = await Promise.resolve(3)
+
+//   console.log(4)
+
+//   return promise
+
+// }
+// fun().then(num => console.log(num))
+
+// console.log('5');
+// //12543
